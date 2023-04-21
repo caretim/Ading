@@ -66,3 +66,11 @@ def update(request, pk):
         # (2) flash message 활용!
         messages.warning(request, '작성자만 수정할 수 있습니다.')
         return redirect('articles:detail', article.pk)
+    
+def delete(request, pk):
+    article = Article.objects.get(pk=pk)
+    if request.user == article.user: 
+        if request.method == 'POST':
+            Article.objects.get(pk=pk).delete()
+
+        return redirect('articles:detail', article.pk)
