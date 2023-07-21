@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 
-def main (request):
-    return render(request, 'articles/main.html')
+def main(request):
+    
+    return render(request, 'articles/index.html')

@@ -1,3 +1,9 @@
 from django.db import models
 
 # Create your models here.
+
+class Ariclee(models.Model):
+    title = models.CharField(max_length=50)
+    content = models.TextField()
+    
+    
