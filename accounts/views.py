@@ -5,7 +5,7 @@ from .forms import UserSignup
 
 
 def signup(request):
-    if request.mothod == 'POST':
+    if request.method == 'POST':
         form = UserSignup(request.POST)
         if form.is_valid():
             form.save()
