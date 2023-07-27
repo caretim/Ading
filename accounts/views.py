@@ -9,13 +9,13 @@ def signup(request):
         form = UserSignup(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('articlse:main')
+            return redirect('articles:main')
     else:
         form = UserSignup()
         context ={
             'signup_form' : form
         }
-    return render(request,'accounts/signup.html',context)
+    return render(request,'accounts/signup.html', context)
 
 
 def login(request):
