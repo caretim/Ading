@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
-{% load django_bootstrap5 %}
+{% load django_bootstrap5%}
 
 {% block content %}
 <p> 게시물 작성 페이지</p>
 
-<form action="" method="POST">
-  {% csrf_token %}
 
-  <input type="submit" value="OK" class="btn btn-primary btn-md">
+<!-- 
+Parameter "form" should contain a valid Django Form. -->
+ 
+<form action="" method="POST" >
+  {% csrf_token %}
+  {% bootstrap_form articleform %}
+  
+  <input type="submit" value="작성" class="btn btn-primary btn-md">
 </form>
 
 

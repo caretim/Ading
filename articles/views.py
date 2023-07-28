@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Article
-from .forms import Article_form
+from .forms import ArticleForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -9,21 +10,24 @@ def main(request):
     
     
     context = {
-        all_articles:"all_articles"
+        "all_articles":all_articles 
     }
     return render(request, 'articles/index.html', context)
 
-
+@login_required
 def create(request):
     if request.method == 'POST':
-        form = Article_form(request.POST)
+        form = ArticleForm(request.POST)
         if form.is_valid:
-            form.save()
+            article = form.save(commit=False)
+            article.user = request.user
+            article.save()
             return redirect('articles:main')
     else:
-        form = Article_form()
+        print(request.user)
+        form = ArticleForm()
     context= {
-        form : 'form'
+        'articleform' :form 
     }
     return render(request ,'articles/create.html',context)
 

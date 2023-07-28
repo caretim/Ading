@@ -6,10 +6,14 @@
 
 <h1>아티클 메인페이지</h1>
 
+
+<button> <a href="/create"> 글작성 </a></button>
 {% if all_articles %}
     
 
     {% for article in all_articles %}
+
+    <p><a href=""> {{ article.title }} </a></p>
 
 
     {% endfor %}
