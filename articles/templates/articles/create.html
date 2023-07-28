@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<p> 게시물 작성 페이지</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <input type="submit" value="OK" class="btn btn-primary btn-md">
+</form>
+
+
+{% endblock %}

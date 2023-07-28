@@ -1,12 +1,14 @@
-from .models import Ariclee
+from .models import Article
 from django import forms
 
 
 class Article_form(forms.ModelForm):
     class Meta:
-        model = Ariclee
-        fields = ['title','context']
+        model = Article
+        fields = ['title','content']
         labels = {
             "title" :"제목",
-            "context":"상세내용",
+            "content":"상세내용",
         }
+
+

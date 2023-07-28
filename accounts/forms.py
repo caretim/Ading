@@ -7,5 +7,6 @@ class UserSignup(UserCreationForm):
     class Meta:
         model = NewUser
         fields = ["username"]
-        
+
+
 

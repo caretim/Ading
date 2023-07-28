@@ -6,5 +6,6 @@ app_name = 'articles'
 
 urlpatterns = [
     path('',views.main,name='main'),
+    path('create/' ,views.create, name='create')
     # path('accounts/', include('accounts.urls')),
 ]

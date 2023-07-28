@@ -1,5 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import UserSignup
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as my_login ,logout as my_logout 
 # Create your views here.
 
 
@@ -12,21 +14,25 @@ def signup(request):
             return redirect('articles:main')
     else:
         form = UserSignup()
-        context ={
-            'signup_form' : form
-        }
+    context ={
+        'signup_form' : form
+    }
     return render(request,'accounts/signup.html', context)
 
 
 def login(request):
     if request.method == 'POST':
-        form = UserSignup(request.POST)
+        form = AuthenticationForm(request,data = request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('articlse:main')
+            my_login(request,form.get_user())
+            return redirect('articles:main')
     else:
-        form = UserSignup()
+        form = AuthenticationForm()
         context ={
-            'signup_form' : form
+            'login_form' : form
         }
-    return render(request,'accounts/signup.html',context)
+        return render(request,'accounts/login.html',context)
+def logout(request):
+    my_logout(request)
+
+    return redirect('articles:main')
