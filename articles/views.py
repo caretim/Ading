@@ -32,6 +32,17 @@ def create(request):
     return render(request ,'articles/create.html',context)
 
 
-# def create(request):
-#     if request.method == "POST":
-#         request.context = 
+def detail(request,pk):
+    article = Article.objects.get(pk=pk)
+    
+    context = {
+        "article":article,
+    }
+    return render(request,"articles/detail.html",context)
+
+@login_required
+def delete(request,pk):
+    articles= Article.objects.get(pk=pk)
+    if articles.user == request.user:
+        articles.delete()
+        return redirect('articles:main')

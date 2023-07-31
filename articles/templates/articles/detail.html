@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+
+{% block content %}
+<h1>아티클 디테일 페이지 </h1>
+
+{% if request.user == article.user %}
+<button> <a href="{% url 'articles:delete' article.pk %}"> 삭제 </a> </button>
+{% endif %}
+<h1> {{article.title}} </h1>
+
+<p>내용</p>
+
+<p> {{article.content}} </p>
+
+{%  endblock %}

@@ -8,12 +8,13 @@
 
 
 <button> <a href="/create"> 글작성 </a></button>
+<hr>
 {% if all_articles %}
     
 
     {% for article in all_articles %}
-
-    <p><a href=""> {{ article.title }} </a></p>
+    <a href=" {%url 'articles:detail' article.pk %}"> {{ article.title }} </a>
+    <hr>
 
 
     {% endfor %}
